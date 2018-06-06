@@ -129,7 +129,7 @@ app.post('/', (req, res)=>{
           res.status(200).json({
             ok: true,
             usuario: usuarioDB,
-            tkoen: token,
+            token: token,
             id: usuarioDB._id
           });
     });
