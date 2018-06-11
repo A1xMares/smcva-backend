@@ -34,7 +34,7 @@ app.get('/todos', (req, res, next) => {
   });
 
 // =====================================================
-// Obtener sistemas por id
+// Obtener sistemas por id de usuario
 // =====================================================
 
 app.get('/', mdAutenticacion.verificaToken ,(req, res, next) => {
@@ -55,6 +55,27 @@ app.get('/', mdAutenticacion.verificaToken ,(req, res, next) => {
             total: conteo
             });
         });
+      });
+});
+
+// =====================================================
+// Obtener sistemas por serial
+// =====================================================
+
+app.get('/:id', mdAutenticacion.verificaToken ,(req, res, next) => {
+  var id = req.params.id;
+    Sistema.findById(id, (err, sistema)=>{
+        if (err) {
+          return res.status(500).json({
+            ok: false,
+            mensaje: 'Error cargando al econtrar sistema',
+            errors: err
+          });
+        }
+          res.status(200).json({
+            ok: true,
+            sistema: sistema
+          });
       });
 });
 

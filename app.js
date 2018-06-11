@@ -29,11 +29,13 @@ var historiaRoutes = require('./routes/historia');
 var uploadRoutes = require('./routes/upload');
 var imagenesRoutes = require('./routes/imagenes');
 
+var buscarRoutes = require('./routes/buscar');
+
 //Rutas
 app.use('/usuario', usuarioRoutes);
 app.use('/login', loginRoutes);
 app.use('/', appRoutes);
-
+app.use('/busqueda', buscarRoutes);
 app.use('/upload', uploadRoutes);
 app.use('/img', imagenesRoutes);
 app.use('/sistema', sistemaRoutes);

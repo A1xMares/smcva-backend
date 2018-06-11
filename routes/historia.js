@@ -11,8 +11,8 @@ var Historia = require('../models/historia');
 // Crear historial desde embebido
 // =====================================================
 
-app.get('/', (req, res, next) => {
-    var Sistema = req.query.sistema;
+app.get('/:id', (req, res, next) => {
+    var Sistema = req.params.id;
     var mov1 = req.query.Mov1;
     var mov2 = req.query.Mov2;
     var imp1 = req.query.Imp1;
@@ -52,7 +52,7 @@ app.get('/', (req, res, next) => {
 // =====================================================
 // Mostrar historial por id 
 // =====================================================
-  app.get('/:id', mdAutenticacion.verificaToken, (req, res, next) => {
+  app.get('/mostrar/:id', mdAutenticacion.verificaToken, (req, res, next) => {
     var id = req.params.id;
     Historia.find({sistema: id}).exec(
       (err, historial) => {
